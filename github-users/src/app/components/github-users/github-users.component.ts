@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GithubDataService } from '../../services/github-data.service';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-github-users',
@@ -9,7 +10,9 @@ import { GithubDataService } from '../../services/github-data.service';
 export class GithubUsersComponent implements OnInit {
   title = 'github-users';
   users;
-  filteredUsers
+  filteredUsers;
+  displayedColumns: string[] = ['id', 'avatar', 'name'];
+  dataSource;
   constructor(private dataService: GithubDataService) {
   }
 
@@ -22,22 +25,22 @@ export class GithubUsersComponent implements OnInit {
       .subscribe(res => {
         this.users = res;
         this.filteredUsers = this.users;
+        this.dataSource = new MatTableDataSource(this.filteredUsers);
       })
   }
 
-  getUserRepo() {
-    
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  filterByName(searchTerm) {
+/*   filterByName(searchTerm) {
     console.log(searchTerm);
     if (searchTerm.length !== 0) {
-      /* this.displayClearBtn = true; */
       this.filteredUsers = this.users.filter(user => user.login.toLowerCase().indexOf(searchTerm) > -1);
     } else {
-      /* this.displayClearBtn = false; */
       this.filteredUsers= this.users;
     }
-  }
+  } */
 
 }
