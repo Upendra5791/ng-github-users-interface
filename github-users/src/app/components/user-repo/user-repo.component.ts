@@ -9,9 +9,9 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./user-repo.component.scss']
 })
 export class UserRepoComponent implements OnInit {
-  repos;
-  ownerDetails;
-  dataSource;
+  repos: any;
+  ownerDetails: any;
+  dataSource: any;
   displayedColumns: string[] = ['name', 'desc' ];
 
   constructor( 

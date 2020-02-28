@@ -9,10 +9,12 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class GithubUsersComponent implements OnInit {
   title = 'github-users';
-  users;
-  filteredUsers;
+  users: any;
+  filteredUsers: any;
+  /* define the columns that needs to be displayed in the table */
   displayedColumns: string[] = ['id', 'avatar', 'name'];
-  dataSource;
+  dataSource: any;
+
   constructor(private dataService: GithubDataService) {
   }
 
@@ -26,21 +28,14 @@ export class GithubUsersComponent implements OnInit {
         this.users = res;
         this.filteredUsers = this.users;
         this.dataSource = new MatTableDataSource(this.filteredUsers);
-      })
+      });
   }
 
+/* This method is used to implement filter with angular material */
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-/*   filterByName(searchTerm) {
-    console.log(searchTerm);
-    if (searchTerm.length !== 0) {
-      this.filteredUsers = this.users.filter(user => user.login.toLowerCase().indexOf(searchTerm) > -1);
-    } else {
-      this.filteredUsers= this.users;
-    }
-  } */
 
 }
