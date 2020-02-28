@@ -25,3 +25,14 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Project Details
+This project lists the Github users in a Tabular for with id and Name along with the user avatar.
+Clicking on the User name will navigate the user to a new page with a brief owner details and the list of repositories.
+
+This project uses Angular Material for styling.
+
+Find the sample screenshots in project-sample folder
+
+
+
